@@ -1,4 +1,2 @@
 site_name: My Docs
-theme:
-  name: null
-  custom_dir: 'mkdocs-material/material'
+theme: 'material'
