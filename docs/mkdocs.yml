@@ -1,2 +1,18 @@
-site_name: My Docs
+---
+# important stuff to note:
+# uses mkdocs 0.17.1 and mkdocs-material version 2.7.3
+# these are REQUIRED for this to work
+site_name: childlanglab-experiments
+pages:
+  - Introduction: index.md
+  - Word Segmentation:
+    - Saffran, Aslin & Newport (1996): word-seg/word-seg.md
+    - Saffran, Newport & Aslin (1998): word-seg/word-seg.md
+    - Non-adjacent lang-version: word-seg/word-seg-non.md
+  - Whack-a-mole:
+    - Adjacent srt-version: whack-a-mole/srt-adj.md
+    - Non-adjacent srt-version: whack-a-mole/srt-non-adj.md
+  - Artificial Wug (Empirical Yang): art-wug.md
 theme: 'material'
+repo_name: 'kschuler/childlanglab-experiments'
+repo_url: 'https://github.com/kschuler/childlanglab-experiments'

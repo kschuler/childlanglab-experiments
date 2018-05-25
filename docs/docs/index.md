@@ -1,7 +1,6 @@
-# Welcome to MkDocs
+# Welcome to childlanglab-experiments
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
-
+A collection of experiments used by the Child Language and Learning Lab.
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
