@@ -1,0 +1,56 @@
+---
+# Experiment-wide parameters
+experiment_wide:
+  fullscreen: false
+  show_progress_bar: true
+  images_to_preload:
+    - 'images/xxx.png'
+  sounds_to_preload:
+    - 'sounds/xxx.wav'
+
+# ---------------- INSTRUCTIONS PARAMETERS --------------------#
+
+instructions:
+  main:
+    timing_post_trial:
+    data: {phase: 'instructions_main'}
+    pages:
+      - 'Welcome to the experiment. Click next to begin.'
+      - 'This is the second page of instructions.'
+      - 'This is the final page of instructions.'
+    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: true
+    show_clickable_nav: true
+  exposure:
+    timing_post_trial:
+    data: {phase: 'instructions_main'}
+    pages:
+      - 'In the exposre part, you should do this.'
+    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: true
+    show_clickable_nav: true
+  test:
+    timing_post_trial:
+    data: {phase: 'instructions_main'}
+    pages:
+        - 'In the test part, you should do this.'
+    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: true
+    show_clickable_nav: true
+
+# ---------------- EXPOSURE PARAMETERS --------------------#
+# participants are asked to listen carefully to a stream of sounds; in the
+# in-lab version, they only have to listen.  Online, we really need to
+# have some way of tracking their attention.
+
+
+# ---------------- TEST PARAMETERS --------------------#
+
+
+# ---------------- DEMOGRAPHIC QUESTIONS PARAMETERS ---------#
