@@ -1,0 +1,30 @@
+---
+# important stuff to note:
+# uses mkdocs 0.17.1 and mkdocs-material version 2.7.3
+# these versions are required for this to work
+site_name: childlanglab-wiki
+pages:
+  - Introduction: index.md
+  - Lab Handbook:
+    - Values: lab-handbook/values.md
+  - Guidelines:
+    - Documentation: guidelines/documentation.md
+    - Literature Review: guidelines/lit-review.md
+    - Data Analysis:
+      - guidelines/data-analysis/getting-started.md
+      - guidelines/data-analysis/importing-and-cleaning.md
+  - Experiment Library:
+    - Getting started: experiment-library/exp-lib-intro.md
+    - Word Segmentation (Rating): experiment-library/word-seg-rating.md
+    - Word Segmentation (2AFC): experiment-library/word-seg-2afc.md
+    - Whack-a-mole : experiment-library/whack-a-mole.md
+    - QLAB Statistical Learning: experiment-library/qlab-statlearn.md
+    - Artificial Wug: experiment-library/artificial-wug.md
+  - Tools:
+    - Favorite tools for common tasks: tools/favorite-tools.md
+theme:
+  name: 'material'
+  palette:
+    primary: 'indigo'
+repo_name: 'kschuler/childlanglab-experiments'
+repo_url: 'https://github.com/kschuler/childlanglab-experiments'

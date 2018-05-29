@@ -6,10 +6,11 @@
         <!-- libraries required for jsPsych plugins -->
         <script src="static/js/jspsych-6.0.2/jspsych.js"></script>
         <script src="static/js/jspsych-6.0.2/plugins/jspsych-instructions.js"></script>
-        <script src="static/js/jspsych-6.0.2/plugins/jspsych-image-keyboard-response.js"></script>
+        <script src="static/js/jspsych-6.0.2/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="static/js/jspsych-6.0.2/plugins/jspsych-audio-button-response.js"></script>
 
         <!-- libraries required for YAML parsing -->
-        <!-- <script src="static/js/yaml.js" type="text/javascript"></script> -->
+        <script src="static/js/yaml.js" type="text/javascript"></script>
 
 
         <!-- css stylesheets for making everything pretty-->
@@ -26,7 +27,7 @@
     <script>
 
     /* load the parameter file as object and save in variable*/
-    // var PARAMS = YAML.load('params.yaml')
+    var PARAMS = YAML.load('params.yaml')
 
     // setup subject data
     jsPsych.data.addProperties({
@@ -41,54 +42,52 @@
     // subjects will be instructed to track 2 images (randomly selected)
     // one within a word and one at a word bounta
 
-    // jsPsych.pluginAPI.preloadImages(PARAMS.experiment_wide.images_to_preload,
-    //   function(){
-    //     startExperiment(); },
-    //   function(nLoaded) {
-    //     updateLoadedCount(nLoaded); }
-    //   );
-    //
-    // function updateLoadedCount(nLoaded){
-    //     var percentcomplete = nLoaded / PARAMS.experiment_wide.images_to_preload.length * 100;
-    //     // could put something fancier here, like a progress bar
-    //     // or updating text in the DOM.
-    //     console.log('Loaded '+percentcomplete+'% of images');
-    // }
 
-    var hello_trial = {
+    var instructions_main = {
         type: 'instructions',
-        pages: ['Help Andy pack his toys.',
-                'When you see the car, press 1; when you see the phone, press 2'],
-        show_clickable_nav: true
+        pages: PARAMS.instructions.main.pages,
+        show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
+    }
+
+    var instructions_exposure = {
+        type: 'instructions',
+        pages: PARAMS.instructions.exposure.pages,
+        show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
+    }
+
+    var instructions_test = {
+        type: 'instructions',
+        pages: PARAMS.instructions.test.pages,
+        show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
     }
 
     var exposure_trials = {
-        type: 'image-keyboard-response',
-        choices: ['1','2'],
-        trial_duration: 1000,
-        response_ends_trial: false,
-        repetitions: 3,
-        timeline: [
-            {stimulus: 'stims/rc.jpg', data: {correct_response: "1"}},
-            {stimulus: 'stims/phone.jpg', data: {correct_response: "2"}},
-            {stimulus: 'stims/lenny.png', data: {correct_response: "null"}},
-            {stimulus: 'stims/army.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/bopeep.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/buzzlightyear.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/dino.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/martian.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/woody.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/pig.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/potatohead.jpg', data: {correct_response: "null"}},
-            {stimulus: 'stims/teddy.jpg', data: {correct_response: "null"}}
-        ]
+      type: 'audio-keyboard-response',
+      stimulus: PARAMS.exposure.stimulus,
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: PARAMS.exposure.trial_ends_after_audio
+    }
+
+    var test_trials = {
+      type: 'audio-keyboard-response',
+      timeline: PARAMS.test.timeline,
+      post_trial_gap: PARAMS.test.post_trial_gap,
+      choices: PARAMS.test.choices,
+      prompt: PARAMS.test.prompt
     }
 
     jsPsych.init({
-        // fullscreen: PARAMS.experiment_wide.fullscreen,
-        // show_progress_bar: PARAMS.experiment_wide.show_progress_bar,
-        timeline: [hello_trial, exposure_trials],
-        show_progress_bar: true,
+        fullscreen: PARAMS.experiment_wide.fullscreen,
+        show_progress_bar: PARAMS.experiment_wide.show_progress_bar,
+        timeline: [
+          instructions_main,
+          instructions_exposure,
+          exposure_trials,
+          instructions_test,
+          test_trials
+        ],
+        preload_audio: PARAMS.experiment_wide.sounds_to_preload,
+        show_preload_progress_bar: PARAMS.experiment_wide.show_preload_progress_bar,
         on_finish: function(){jsPsych.data.displayData();}
     });
 
