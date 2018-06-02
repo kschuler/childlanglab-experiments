@@ -55,18 +55,20 @@
         show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
     }
 
-    var instructions_test = {
-        type: 'instructions',
-        pages: PARAMS.instructions.test.pages,
-        show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
-    }
-
     var exposure_trials = {
       type: 'audio-keyboard-response',
       stimulus: PARAMS.exposure.stimulus,
       choices: jsPsych.NO_KEYS,
       trial_ends_after_audio: PARAMS.exposure.trial_ends_after_audio
     }
+
+    var instructions_test = {
+        type: 'instructions',
+        pages: PARAMS.instructions.test.pages,
+        show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
+    }
+
+
 
     var test_trials = {
       type: 'audio-keyboard-response',

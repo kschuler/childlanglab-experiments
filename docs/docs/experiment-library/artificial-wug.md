@@ -1,6 +1,5 @@
-# Non-adjacent SRT
+# Artificial Wug
 
-An introduction
 
 ## javascript
 These are javascript experiments
